@@ -1,9 +1,9 @@
 const Item = require("./models/item");
 const Category = require("./models/category");
+require("dotenv").config();
 
 const mongoose = require("mongoose");
-const mongoDB =
-  "mongodb+srv://jakub:jakub@inventoryapp.p6fui.mongodb.net/InventoryApp?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGO_URL;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
