@@ -1,0 +1,9 @@
+<%- layout('layouts/boilerplate')%>
+<div class="container mt-5 mb-5 show_item">
+  <h2><%- item.name %></h2>
+  <div>Description:</div>
+  <p><%- item.description %></p>
+  <div>Price: <%- item.price %>$</div>
+  <div>In stock: <%- item.inStock %></div>
+  Category:<a href="/categories"> <%- item.category %> </a>
+</div>

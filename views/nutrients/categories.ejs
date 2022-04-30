@@ -1,0 +1,16 @@
+<%- layout('layouts/boilerplate')%>
+<div class="container mt-5 mb-5 items_list">
+  <% for (let category of categories){%>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h2 class="card-title"><%- category.name %></h2>
+      <a class="btn btn-primary" href="/categories/<%= category._id %> "
+        >Items</a
+      >
+    </div>
+  </div>
+  <% }%>
+</div>
+<a class="btn btn-primary mt-5 mb-5 align-center" href="/categories/new"
+  >Add New Category</a
+>

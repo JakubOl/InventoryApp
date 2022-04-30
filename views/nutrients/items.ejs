@@ -1,0 +1,18 @@
+<%- layout('layouts/boilerplate')%>
+<h1>Items:</h1>
+<div class="container mt-5 mb-5 items_list">
+  <% for (let item of items){%>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h2 class="card-title"><%- item.name %></h2>
+      <a class="btn btn-primary" href="/items/<%= item._id %> ">Read more</a>
+      <form action="/items/<%=item._id%>?_method=DELETE" method="POST">
+        <button class="btn btn-sm btn-danger">Delete</button>
+      </form>
+    </div>
+  </div>
+  <% }%>
+</div>
+<a class="btn btn-primary mt-5 mb-5 align-center" href="/items/new"
+  >Add New Item</a
+>
