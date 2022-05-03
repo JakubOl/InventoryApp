@@ -1,6 +1,13 @@
 <%- layout('layouts/boilerplate')%>
-<div class="container mt-5 mb-5 show_item">
-  <h1>category</h1>
-  <div><%- category.description %></div>
-  Category:<a href="/categories"> <%- category.category %> </a>
+<h1><%- category.name %></h1>
+<p><%- category.description %></p>
+<div class="container mt-5 mb-5 items_list">
+  <% for (let item of items){%>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h2 class="card-title"><%- item.name %></h2>
+      <a class="btn btn-primary" href="/items/<%= item._id %> ">Read more</a>
+    </div>
+  </div>
+  <% }%>
 </div>

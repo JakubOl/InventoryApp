@@ -3,13 +3,16 @@ const router = express.Router();
 const catchAsync = require("../utils/catchAsync");
 const categories = require("../controllers/categories");
 
-router.route("/").get(categories.index);
+router.route("/").get(catchAsync(categories.index));
 
 router
   .route("/new")
-  .get(categories.renderNewForm)
-  .post(categories.createCategory);
+  .get(catchAsync(categories.renderNewForm))
+  .post(catchAsync(categories.createCategory));
 
-router.route("/:id").get(categories.showCategory);
+router
+  .route("/:id")
+  .get(catchAsync(categories.showCategory))
+  .delete(catchAsync(categories.deleteCategory));
 
 module.exports = router;

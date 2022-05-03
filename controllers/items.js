@@ -8,7 +8,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.showItem = async (req, res) => {
   const item = await Item.findById(req.params.id);
-  res.render("nutrients/show", { item });
+  res.render("nutrients/showItem", { item });
 };
 
 module.exports.renderNewForm = async (req, res) => {
@@ -24,7 +24,22 @@ module.exports.createItem = async (req, res, next) => {
 
 module.exports.deteleItem = async (req, res, next) => {
   const { id } = req.params;
-  console.log(req.params, id, "Ok");
   await Item.findByIdAndDelete(id);
   res.redirect("/items");
+};
+
+module.exports.renderEditForm = async (req, res, next) => {
+  const { id } = req.params;
+  const item = await Item.findById(id);
+  const categories = await Category.find({});
+  res.render("nutrients/editItem", { item, categories });
+};
+
+module.exports.updateItem = async (req, res, next) => {
+  const { id } = req.params;
+  const item = await Item.findByIdAndUpdate(id, {
+    ...req.body,
+  });
+  await item.save();
+  res.redirect(`/items/${item.id}`);
 };

@@ -1,12 +1,16 @@
 <%- layout('layouts/boilerplate')%>
+<h1>Categories:</h1>
 <div class="container mt-5 mb-5 items_list">
   <% for (let category of categories){%>
   <div class="card" style="width: 18rem">
     <div class="card-body">
       <h2 class="card-title"><%- category.name %></h2>
-      <a class="btn btn-primary" href="/categories/<%= category._id %> "
-        >Items</a
-      >
+      <form action="/categories/<%=category._id%>?_method=DELETE" method="POST">
+        <a class="btn btn-primary" href="/categories/<%= category._id %> "
+          >More</a
+        >
+        <button class="btn btn-danger">Delete</button>
+      </form>
     </div>
   </div>
   <% }%>
