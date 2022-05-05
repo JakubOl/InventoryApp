@@ -9,7 +9,6 @@ require("dotenv").config();
 const ExpressError = require("./utils/ExpressError");
 const methodOverride = require("method-override");
 
-const indexRouter = require("./routes/index");
 const itemsRouter = require("./routes/items");
 const categoriesRouter = require("./routes/categories");
 
@@ -34,7 +33,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 
-app.use("/", indexRouter);
+app.get("/", (req, res, next) => {
+  res.status(200).render("index");
+});
+
 app.use("/items", itemsRouter);
 app.use("/categories", categoriesRouter);
 
